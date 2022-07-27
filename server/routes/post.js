@@ -53,3 +53,64 @@ router.get('/', verifyToken, async(req, res) => {
             .json({ success: false, message: 'Internal server error' })
     }
 })
+
+// @router PUT api/posts/:id
+// @desc Update posts
+// @access Private
+router.put('/:id', verifyToken, async(req, res) => {
+    const { title, description, url, status } = req.body
+
+    // Simple validation
+    if (!title)
+        return res
+            .status(400)
+            .json({ success: false, message: 'Title is required' })
+
+    try {
+        let updatePost = {
+            title,
+            description: description || '',
+            url: (url.startsWith('https://') ? url : `https://${url}`) || '',
+            status: status || 'TO LEARN'
+        }
+
+        const postUpdateCondition = { _id: req.params.id, user: req.userId }
+        updatePost = await Post.findByIdAndUpdate(postUpdateCondition, updatePost, { new: true })
+
+        // User not authorized to update post or post not found
+        if (!updatePost)
+            return res
+                .status(401)
+                .json({ success: false, message: 'Post not found or user not authorized' })
+
+        res.json({ success: true, message: 'Post updated successfully!', post: updatePost })
+    } catch (error) {
+        console.log(error)
+        res
+            .status(500)
+            .json({ success: false, message: 'Internal server error' })
+    }
+})
+
+// @router DELETE api/posts/:id
+// @desc removed posts
+// @access Private
+router.delete('/:id', verifyToken, async(req, res) => {
+    try {
+        const postDeleteCondition = { _id: req.params.id, userId: req.userId }
+        const deletePost = await Post.findByIdAndDelete(postDeleteCondition)
+
+        // User not authorized to update post or post not found
+        if (!deletePost)
+            return res
+                .status(401)
+                .json({ success: false, message: 'Post not found or user not authorized' })
+
+        res.json({ success: true, message: 'Post deleted successfully', post: deletePost })
+    } catch (error) {
+        console.log(error)
+        res
+            .status(500)
+            .json({ success: false, message: 'Internal server error' })
+    }
+})

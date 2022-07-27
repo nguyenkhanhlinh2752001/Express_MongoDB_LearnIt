@@ -12,8 +12,8 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "nhim2",
-    "password": "nhim2"
+    "username": "nhim",
+    "password": "nhim"
 }
 
 ###
@@ -22,9 +22,25 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmUxMDBiYTFhMWYyYzZiZGI0YWVmOTUiLCJpYXQiOjE2NTg5MTI5NTR9.Ay-8AhQV-h-x1SbuO_UMQQoP-dMZekMkRmsy0aym6Mk
 
 {
-    "title": "Ruby",
+    "title": "Pascal",
     "description": "Java is an object oriented language which gives a clear structure to programs and allows code to be reused, lowering development costs",
     "url":"https://www.w3schools.com/java/default.asp",
     "status":"TO LEARN"
+}
+
+###
+GET http://localhost:5000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmUwYjIxOGU5OTU0NDMyMmQ0YTFjMWMiLCJpYXQiOjE2NTg5MTQ0NzF9.BCERF-Kl99fGMEFKQqUE1eVAco7YledLZsrQ72lhNdw
+
+###
+PUT http://localhost:5000/api/posts/62e1003f8782740f10f19fa3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmUwYjIxOGU5OTU0NDMyMmQ0YTFjMWMiLCJpYXQiOjE2NTg5MTQ0NzF9.BCERF-Kl99fGMEFKQqUE1eVAco7YledLZsrQ72lhNdw
+
+{
+    "title": "Pascal-v2",
+    "description": "Java is an object oriented language which gives a clear structure to programs and allows code to be reused, lowering development costs",
+    "url":"https://www.w3schools.com/java/default.asp",
+    "status":"LEARNED"
 }
 
