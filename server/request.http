@@ -15,3 +15,15 @@ Content-Type: application/json
     "username": "nhim2",
     "password": "nhim2"
 }
+
+###
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+
+{
+    "title": "Python",
+    "description": "Java is an object oriented language which gives a clear structure to programs and allows code to be reused, lowering development costs",
+    "url":"https://www.w3schools.com/java/default.asp",
+    "status":"LEARNING"
+}
+

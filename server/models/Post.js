@@ -14,9 +14,10 @@ const PostSchema = new Schema({
         type: String,
     },
     url: {
-        type: Date,
+        type: String,
     },
     status: {
+        type: String,
         emum: ['TO LERAN', 'LEARNING', 'LEARNED']
     },
 
