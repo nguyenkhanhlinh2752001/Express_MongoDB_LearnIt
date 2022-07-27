@@ -38,3 +38,18 @@ router.post('/', verifyToken, async(req, res) => {
 })
 
 module.exports = router
+
+// @router GET api/posts
+// @desc Get posts
+// @access Private
+router.get('/', verifyToken, async(req, res) => {
+    try {
+        const posts = await Post.find({ user: req.userId }).populate('user', ['username'])
+        res.json({ success: true, posts })
+    } catch (error) {
+        console.log(error)
+        res
+            .status(500)
+            .json({ success: false, message: 'Internal server error' })
+    }
+})
