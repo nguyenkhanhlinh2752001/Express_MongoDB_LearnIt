@@ -2,8 +2,8 @@ POST  http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "nhim2",
-    "password": "nhim2"
+    "username": "bong",
+    "password": "bong"
 }
 
 ###
@@ -19,11 +19,12 @@ Content-Type: application/json
 ###
 POST http://localhost:5000/api/posts
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmUxMDBiYTFhMWYyYzZiZGI0YWVmOTUiLCJpYXQiOjE2NTg5MTI5NTR9.Ay-8AhQV-h-x1SbuO_UMQQoP-dMZekMkRmsy0aym6Mk
 
 {
-    "title": "Python",
+    "title": "Ruby",
     "description": "Java is an object oriented language which gives a clear structure to programs and allows code to be reused, lowering development costs",
     "url":"https://www.w3schools.com/java/default.asp",
-    "status":"LEARNING"
+    "status":"TO LEARN"
 }
 
